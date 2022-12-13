@@ -259,3 +259,21 @@ init
 #define TL_green_1 (TLColor[1] == GREEN)
 #define TL_green_2 (TLColor[2] == GREEN)
 #define TL_green_3 (TLColor[3] == GREEN)
+
+/* Safety: Intersecting roads traffic light both never has GREEN state */
+/*
+ * [] (!accident_01)
+ * [] (!accident_02)
+ * [] (!accident_03)
+ * [] (!accident_13)
+ * [] (!accident_23)
+ */
+
+/* Liveness: If cars wait on traffic light, then in future traffic light
+ * became GREEN */
+/*
+ * [] (car_waiting_0 -> <> tl_green_0)
+ * [] (car_waiting_1 -> <> tl_green_1)
+ * [] (car_waiting_2 -> <> tl_green_2)
+ * [] (car_waiting_3 -> <> tl_green_3)
+ */
